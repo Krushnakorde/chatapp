@@ -14,10 +14,10 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const displayName = await e.target[0].value;
-        const email = await e.target[1].value;
-        const password = await e.target[2].value;
-        const file = await e.target[3].files[0];
+        const displayName = e.target[0].value;
+        const email = e.target[1].value;
+        const password = e.target[2].value;
+        const file = e.target[3].files[0];
 
 
         try {
@@ -28,7 +28,7 @@ function Register() {
 
             const storageRef = ref(storage, `userImages/${displayName}`);
 
-            const uploadTask = uploadBytesResumable(storageRef, file)
+            uploadBytesResumable(storageRef, file)
                 .then(() => {
                     getDownloadURL(storageRef).then(async (downloadURL) => {
                         await updateProfile(res.user, {
@@ -44,21 +44,27 @@ function Register() {
                         })
 
                         await setDoc(doc(db, "userChats", res.user.uid), {})
-
-                        navigate("/")
+                        
 
                     });
                 })
+
+                console.log("hello")
+                        navigate("/chatapp")
+                    
 
 
         } catch (err) {
 
             setErr(err);
+    
         }
 
 
 
     }
+
+ 
 
     if (err) {
 

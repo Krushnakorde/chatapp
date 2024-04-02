@@ -21,7 +21,7 @@ const Login = () => {
         try {
 
             await signInWithEmailAndPassword(auth, email, password)
-            navigate("/")
+            navigate("/chatapp")
 
             toast.success("User login successful.", {
                 toastId: "suc1"
