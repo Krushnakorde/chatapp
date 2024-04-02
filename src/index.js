@@ -13,12 +13,13 @@ root.render(
   <>
 
     <React.StrictMode>
-      <ToastContainer />
+      <ToastContainer>
       <AuthContextProvider>
         <ChatContextProvider>
           <App />
         </ChatContextProvider>
       </AuthContextProvider>
+      </ToastContainer>
     </React.StrictMode>
 
   </>
