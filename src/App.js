@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import "./style.scss"
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 function App() {
 
@@ -20,9 +20,15 @@ function App() {
     return children;
   }
 
+  const routes = createBrowserRouter([
+    {path:"/", element:<ProtectedRoute> <Home/> </ProtectedRoute>},
+    {path:"login", element:<Login/>},
+    {path:"register", element:<Register/>}
+  ])
+
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/'>
 
@@ -32,7 +38,12 @@ function App() {
 
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+    
+        <RouterProvider router={routes}/>
+      
+
     </>
   );
 }

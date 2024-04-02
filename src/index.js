@@ -11,15 +11,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <>
-
+  
     <React.StrictMode>
-      <ToastContainer>
+      <ToastContainer/>
       <AuthContextProvider>
         <ChatContextProvider>
           <App />
         </ChatContextProvider>
       </AuthContextProvider>
-      </ToastContainer>
+      
+    
+      
     </React.StrictMode>
 
   </>
